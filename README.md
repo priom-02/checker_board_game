@@ -27,6 +27,7 @@ python benchmark.py --summary       # summary of every recorded AI vs AI game
   pieces that must capture are outlined in gold and other moves are refused.)
 * AI vs AI: **Start**, **Pause/Resume** (also the Space key) and **Reset**.
 * **Restart** and **Menu** are always available; Esc returns to the menu.
+* **Fullscreen**: The game starts in fullscreen mode by default (`FULLSCREEN = True` in `config.py`). Press **F11** or **Alt+Enter** (or click the Fullscreen button on the menu) to toggle between Fullscreen and Windowed mode at any time. Windowed mode is also resizable and maximizable.
 
 ## Rules implemented
 

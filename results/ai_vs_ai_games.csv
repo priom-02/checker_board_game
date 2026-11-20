@@ -67,3 +67,5 @@ timestamp,source,difficulty,minimax_depth,mcts_simulations,capture_rule,minimax_
 2026-11-13 12:37:47,gui,Medium,4,500,optional,red,minimax,Black has no pieces left,46,23,0.6972,23,8.3405
 2026-11-13 12:38:39,gui,Medium,4,500,optional,black,minimax,Red has no legal moves,47,24,0.543,23,8.2554
 2026-11-13 12:40:10,gui,Hard,6,2000,optional,black,minimax,Red has no pieces left,65,33,2.4269,32,40.921
+2026-11-20 21:19:25,gui,Hard,6,2000,optional,black,minimax,Red has no legal moves,41,21,4.1469,20,81.4529
+2026-11-20 21:21:37,gui,Hard,6,2000,optional,black,minimax,Red has no pieces left,43,22,5.0699,21,78.8301

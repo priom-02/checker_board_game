@@ -13,6 +13,8 @@ CREDITS = ["Priom Sarker - 2207048", "Md. Toufiq Hasan - 2207049"]
 # ---------------------------------------------------------------------------
 # Window and board layout (pixels)
 # ---------------------------------------------------------------------------
+FULLSCREEN = True                                # Start in full screen mode (toggle with F11)
+
 BOARD_SIZE = 8
 SQUARE_SIZE = 76
 BOARD_PIXELS = SQUARE_SIZE * BOARD_SIZE          # 608
