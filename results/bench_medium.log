@@ -1,0 +1,28 @@
+
+== Medium: Minimax depth 4 vs MCTS 500 simulations ==
+  game   1: minimax=black winner=minimax plies= 43  (Red has no pieces left)  20.7s
+  game   2: minimax=red   winner=minimax plies= 46  (Black has no pieces left)  29.5s
+  game   3: minimax=black winner=minimax plies= 35  (Red has no legal moves)  24.4s
+  game   4: minimax=red   winner=minimax plies= 48  (Black has no pieces left)  31.9s
+  game   5: minimax=black winner=minimax plies= 79  (Red has no pieces left)  45.8s
+  game   6: minimax=red   winner=minimax plies= 74  (Black has no pieces left)  36.3s
+  game   7: minimax=black winner=minimax plies= 43  (Red has no pieces left)  16.8s
+  game   8: minimax=red   winner=minimax plies= 38  (Black has no pieces left)  13.4s
+  game   9: minimax=black winner=minimax plies= 55  (Red has no pieces left)  16.9s
+  game  10: minimax=red   winner=minimax plies= 54  (Black has no pieces left)  20.5s
+  game  11: minimax=black winner=minimax plies= 47  (Red has no pieces left)  16.3s
+  game  12: minimax=red   winner=minimax plies= 44  (Black has no pieces left)  18.9s
+  game  13: minimax=black winner=minimax plies= 45  (Red has no pieces left)  18.7s
+  game  14: minimax=red   winner=minimax plies= 48  (Black has no pieces left)  24.0s
+  game  15: minimax=black winner=minimax plies= 37  (Red has no legal moves)  10.6s
+  game  16: minimax=red   winner=minimax plies= 48  (Black has no legal moves)  15.7s
+  game  17: minimax=black winner=minimax plies= 45  (Red has no pieces left)  15.4s
+  game  18: minimax=red   winner=minimax plies= 88  (Black has no pieces left)  24.3s
+  game  19: minimax=black winner=minimax plies= 53  (Red has no legal moves)  18.4s
+  game  20: minimax=red   winner=minimax plies= 34  (Black has no legal moves)  11.3s
+
+Results of this run (computed from the games above):
+
+Difficulty Games  Minimax win  MCTS win    Draw  Minimax avg t  MCTS avg t  Avg plies
+--------------------------------------------------------------------------------------
+Medium        20      100.0%      0.0%    0.0%         0.031s      0.834s       50.2

@@ -1,0 +1,18 @@
+
+== Hard: Minimax depth 6 vs MCTS 2000 simulations ==
+  game   1: minimax=black winner=minimax plies=111  (Red has no pieces left)  79.2s
+  game   2: minimax=red   winner=minimax plies=108  (Black has no pieces left)  99.8s
+  game   3: minimax=black winner=draw    plies=209  (40-move rule (no capture or man move))  43.9s
+  game   4: minimax=red   winner=minimax plies=120  (Black has no pieces left)  42.0s
+  game   5: minimax=black winner=minimax plies=133  (Red has no pieces left)  51.3s
+  game   6: minimax=red   winner=minimax plies=114  (Black has no pieces left)  50.4s
+  game   7: minimax=black winner=minimax plies= 75  (Red has no legal moves)  23.3s
+  game   8: minimax=red   winner=draw    plies=200  (40-move rule (no capture or man move))  33.6s
+  game   9: minimax=black winner=draw    plies=193  (Threefold repetition)  68.7s
+  game  10: minimax=red   winner=mcts    plies=201  (Red has no pieces left)  39.6s
+
+Results of this run (computed from the games above):
+
+Difficulty Games  Minimax win  MCTS win    Draw  Minimax avg t  MCTS avg t  Avg plies
+--------------------------------------------------------------------------------------
+Hard          10       60.0%     10.0%   30.0%         0.045s      0.683s      146.4

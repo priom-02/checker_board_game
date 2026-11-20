@@ -1,0 +1,7 @@
+All recorded AI vs AI games (E:\checkergame_AI\results\ai_vs_ai_games.csv):
+
+Difficulty Games  Minimax win  MCTS win    Draw  Minimax avg t  MCTS avg t  Avg plies
+--------------------------------------------------------------------------------------
+Easy          30      100.0%      0.0%    0.0%         0.001s      0.073s       45.2
+Medium        20      100.0%      0.0%    0.0%         0.031s      0.834s       50.2
+Hard          10      100.0%      0.0%    0.0%         0.137s      2.602s       55.5

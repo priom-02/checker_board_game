@@ -1,0 +1,38 @@
+
+== Easy: Minimax depth 2 vs MCTS 100 simulations ==
+  game   1: minimax=black winner=mcts    plies=268  (Black has no pieces left)  4.4s
+  game   2: minimax=red   winner=minimax plies=106  (Black has no pieces left)  4.1s
+  game   3: minimax=black winner=mcts    plies=208  (Black has no pieces left)  8.5s
+  game   4: minimax=red   winner=minimax plies=146  (Black has no pieces left)  4.9s
+  game   5: minimax=black winner=minimax plies=209  (Red has no pieces left)  7.1s
+  game   6: minimax=red   winner=minimax plies= 66  (Black has no pieces left)  2.9s
+  game   7: minimax=black winner=minimax plies= 97  (Red has no pieces left)  2.8s
+  game   8: minimax=red   winner=mcts    plies=129  (Red has no pieces left)  4.9s
+  game   9: minimax=black winner=minimax plies= 91  (Red has no pieces left)  4.2s
+  game  10: minimax=red   winner=minimax plies= 72  (Black has no pieces left)  2.6s
+  game  11: minimax=black winner=mcts    plies=246  (Black has no pieces left)  9.9s
+  game  12: minimax=red   winner=minimax plies=126  (Black has no pieces left)  4.9s
+  game  13: minimax=black winner=minimax plies= 81  (Red has no pieces left)  3.0s
+  game  14: minimax=red   winner=minimax plies=106  (Black has no pieces left)  4.6s
+  game  15: minimax=black winner=mcts    plies= 52  (Black has no pieces left)  2.1s
+  game  16: minimax=red   winner=mcts    plies= 51  (Red has no legal moves)  1.8s
+  game  17: minimax=black winner=minimax plies= 69  (Red has no legal moves)  2.2s
+  game  18: minimax=red   winner=mcts    plies=133  (Red has no pieces left)  4.1s
+  game  19: minimax=black winner=minimax plies= 87  (Red has no pieces left)  3.4s
+  game  20: minimax=red   winner=minimax plies=154  (Black has no pieces left)  6.9s
+  game  21: minimax=black winner=mcts    plies=148  (Black has no pieces left)  3.9s
+  game  22: minimax=red   winner=minimax plies=112  (Black has no pieces left)  3.3s
+  game  23: minimax=black winner=draw    plies=132  (Threefold repetition)  6.1s
+  game  24: minimax=red   winner=minimax plies=102  (Black has no pieces left)  2.3s
+  game  25: minimax=black winner=mcts    plies=166  (Black has no pieces left)  4.6s
+  game  26: minimax=red   winner=minimax plies=102  (Black has no pieces left)  4.0s
+  game  27: minimax=black winner=minimax plies= 69  (Red has no pieces left)  2.6s
+  game  28: minimax=red   winner=draw    plies=115  (Threefold repetition)  5.0s
+  game  29: minimax=black winner=mcts    plies=208  (Black has no pieces left)  8.4s
+  game  30: minimax=red   winner=minimax plies=128  (Black has no pieces left)  5.5s
+
+Results of this run (computed from the games above):
+
+Difficulty Games  Minimax win  MCTS win    Draw  Minimax avg t  MCTS avg t  Avg plies
+--------------------------------------------------------------------------------------
+Easy          30       60.0%     33.3%    6.7%         0.002s      0.070s      126.0

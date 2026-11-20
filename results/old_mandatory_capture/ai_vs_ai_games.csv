@@ -1,0 +1,61 @@
+timestamp,source,difficulty,minimax_depth,mcts_simulations,minimax_color,winner,reason,plies,minimax_moves,minimax_total_time,mcts_moves,mcts_total_time
+2026-11-07 18:16:31,benchmark,Easy,2,100,black,mcts,Black has no pieces left,268,134,0.1071,134,4.2496
+2026-11-07 18:16:35,benchmark,Easy,2,100,red,minimax,Black has no pieces left,106,53,0.0857,53,4.0319
+2026-11-07 18:16:44,benchmark,Easy,2,100,black,mcts,Black has no pieces left,208,104,0.186,104,8.2784
+2026-11-07 18:16:49,benchmark,Easy,2,100,red,minimax,Black has no pieces left,146,73,0.0938,73,4.7756
+2026-11-07 18:16:56,benchmark,Easy,2,100,black,minimax,Red has no pieces left,209,105,0.2192,104,6.8516
+2026-11-07 18:16:59,benchmark,Easy,2,100,red,minimax,Black has no pieces left,66,33,0.0675,33,2.7997
+2026-11-07 18:17:02,benchmark,Easy,2,100,black,minimax,Red has no pieces left,97,49,0.06,48,2.7208
+2026-11-07 18:17:07,benchmark,Easy,2,100,red,mcts,Red has no pieces left,129,64,0.0838,65,4.852
+2026-11-07 18:17:11,benchmark,Easy,2,100,black,minimax,Red has no pieces left,91,46,0.0853,45,4.1057
+2026-11-07 18:17:13,benchmark,Easy,2,100,red,minimax,Black has no pieces left,72,36,0.0518,36,2.5772
+2026-11-07 18:17:23,benchmark,Easy,2,100,black,mcts,Black has no pieces left,246,123,0.2061,123,9.6675
+2026-11-07 18:17:28,benchmark,Easy,2,100,red,minimax,Black has no pieces left,126,63,0.1366,63,4.7704
+2026-11-07 18:17:31,benchmark,Easy,2,100,black,minimax,Red has no pieces left,81,41,0.064,40,2.9721
+2026-11-07 18:17:36,benchmark,Easy,2,100,red,minimax,Black has no pieces left,106,53,0.0981,53,4.4675
+2026-11-07 18:17:38,benchmark,Easy,2,100,black,mcts,Black has no pieces left,52,26,0.0514,26,2.042
+2026-11-07 18:17:40,benchmark,Easy,2,100,red,mcts,Red has no legal moves,51,25,0.0479,26,1.7596
+2026-11-07 18:17:42,benchmark,Easy,2,100,black,minimax,Red has no legal moves,69,35,0.0476,34,2.1921
+2026-11-07 18:17:46,benchmark,Easy,2,100,red,mcts,Red has no pieces left,133,66,0.0958,67,3.9517
+2026-11-07 18:17:49,benchmark,Easy,2,100,black,minimax,Red has no pieces left,87,44,0.077,43,3.2764
+2026-11-07 18:17:56,benchmark,Easy,2,100,red,minimax,Black has no pieces left,154,77,0.1527,77,6.7547
+2026-11-07 18:18:00,benchmark,Easy,2,100,black,mcts,Black has no pieces left,148,74,0.0829,74,3.827
+2026-11-07 18:18:04,benchmark,Easy,2,100,red,minimax,Black has no pieces left,112,56,0.0586,56,3.247
+2026-11-07 18:18:10,benchmark,Easy,2,100,black,draw,Threefold repetition,132,66,0.0806,66,6.0133
+2026-11-07 18:18:12,benchmark,Easy,2,100,red,minimax,Black has no pieces left,102,51,0.0664,51,2.2543
+2026-11-07 18:18:17,benchmark,Easy,2,100,black,mcts,Black has no pieces left,166,83,0.096,83,4.4731
+2026-11-07 18:18:21,benchmark,Easy,2,100,red,minimax,Black has no pieces left,102,51,0.0608,51,3.9757
+2026-11-07 18:18:23,benchmark,Easy,2,100,black,minimax,Red has no pieces left,69,35,0.0609,34,2.5058
+2026-11-07 18:18:28,benchmark,Easy,2,100,red,draw,Threefold repetition,115,57,0.1101,58,4.8844
+2026-11-07 18:18:37,benchmark,Easy,2,100,black,mcts,Black has no pieces left,208,104,0.1904,104,8.1395
+2026-11-07 18:18:42,benchmark,Easy,2,100,red,minimax,Black has no pieces left,128,64,0.1208,64,5.3209
+2026-11-07 18:19:01,benchmark,Medium,4,500,black,draw,Threefold repetition,97,49,0.5908,48,17.4525
+2026-11-07 18:19:23,benchmark,Medium,4,500,red,mcts,Red has no pieces left,103,51,0.7455,52,21.506
+2026-11-07 18:19:41,benchmark,Medium,4,500,black,draw,Threefold repetition,79,40,0.412,39,17.3757
+2026-11-07 18:19:51,benchmark,Medium,4,500,red,minimax,Black has no pieces left,54,27,0.5619,27,10.0102
+2026-11-07 18:20:08,benchmark,Medium,4,500,black,mcts,Black has no pieces left,78,39,0.6949,39,15.8983
+2026-11-07 18:20:27,benchmark,Medium,4,500,red,mcts,Red has no pieces left,93,46,0.5768,47,18.7468
+2026-11-07 18:20:46,benchmark,Medium,4,500,black,minimax,Red has no pieces left,111,56,0.8623,55,17.7702
+2026-11-07 18:21:17,benchmark,Medium,4,500,red,minimax,Black has no pieces left,154,77,1.5348,77,29.0365
+2026-11-07 18:21:49,benchmark,Medium,4,500,black,draw,Threefold repetition,141,71,1.6602,70,30.763
+2026-11-07 18:22:04,benchmark,Medium,4,500,red,minimax,Black has no pieces left,70,35,0.6632,35,14.5613
+2026-11-07 18:22:22,benchmark,Medium,4,500,black,minimax,Red has no pieces left,79,40,0.6044,39,16.9289
+2026-11-07 18:22:38,benchmark,Medium,4,500,red,mcts,Red has no pieces left,99,49,0.5985,50,15.409
+2026-11-07 18:23:09,benchmark,Medium,4,500,black,draw,40-move rule (no capture or man move),203,102,1.202,101,29.7831
+2026-11-07 18:23:19,benchmark,Medium,4,500,red,mcts,Red has no pieces left,55,27,0.4402,28,9.8838
+2026-11-07 18:24:03,benchmark,Medium,4,500,black,draw,40-move rule (no capture or man move),245,123,1.7536,122,42.1508
+2026-11-07 18:24:28,benchmark,Medium,4,500,red,minimax,Black has no pieces left,108,54,1.1667,54,23.5458
+2026-11-07 18:24:41,benchmark,Medium,4,500,black,mcts,Black has no pieces left,66,33,0.48,33,12.5035
+2026-11-07 18:24:59,benchmark,Medium,4,500,red,draw,Threefold repetition,80,40,0.7772,40,17.6701
+2026-11-07 18:25:27,benchmark,Medium,4,500,black,draw,40-move rule (no capture or man move),170,85,1.0535,85,26.3938
+2026-11-07 18:25:56,benchmark,Medium,4,500,red,minimax,Black has no pieces left,134,67,1.2465,67,27.735
+2026-11-07 18:27:16,benchmark,Hard,6,2000,black,minimax,Red has no pieces left,111,56,4.3546,55,74.8564
+2026-11-07 18:28:55,benchmark,Hard,6,2000,red,minimax,Black has no pieces left,108,54,5.4498,54,94.3792
+2026-11-07 18:29:39,benchmark,Hard,6,2000,black,draw,40-move rule (no capture or man move),209,105,2.2717,104,41.6569
+2026-11-07 18:30:21,benchmark,Hard,6,2000,red,minimax,Black has no pieces left,120,60,2.306,60,39.7259
+2026-11-07 18:31:13,benchmark,Hard,6,2000,black,minimax,Red has no pieces left,133,67,3.3864,66,47.9488
+2026-11-07 18:32:03,benchmark,Hard,6,2000,red,minimax,Black has no pieces left,114,57,4.5829,57,45.837
+2026-11-07 18:32:26,benchmark,Hard,6,2000,black,minimax,Red has no legal moves,75,38,1.5303,37,21.8035
+2026-11-07 18:33:00,benchmark,Hard,6,2000,red,draw,40-move rule (no capture or man move),200,100,1.2504,100,32.3136
+2026-11-07 18:34:09,benchmark,Hard,6,2000,black,draw,Threefold repetition,193,97,5.9066,96,62.8172
+2026-11-07 18:34:48,benchmark,Hard,6,2000,red,mcts,Red has no pieces left,201,100,2.1112,101,37.4733

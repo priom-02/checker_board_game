@@ -1,0 +1,28 @@
+
+== Medium: Minimax depth 4 vs MCTS 500 simulations ==
+  game   1: minimax=black winner=draw    plies= 97  (Threefold repetition)  18.1s
+  game   2: minimax=red   winner=mcts    plies=103  (Red has no pieces left)  22.3s
+  game   3: minimax=black winner=draw    plies= 79  (Threefold repetition)  17.8s
+  game   4: minimax=red   winner=minimax plies= 54  (Black has no pieces left)  10.6s
+  game   5: minimax=black winner=mcts    plies= 78  (Black has no pieces left)  16.6s
+  game   6: minimax=red   winner=mcts    plies= 93  (Red has no pieces left)  19.3s
+  game   7: minimax=black winner=minimax plies=111  (Red has no pieces left)  18.6s
+  game   8: minimax=red   winner=minimax plies=154  (Black has no pieces left)  30.6s
+  game   9: minimax=black winner=draw    plies=141  (Threefold repetition)  32.4s
+  game  10: minimax=red   winner=minimax plies= 70  (Black has no pieces left)  15.2s
+  game  11: minimax=black winner=minimax plies= 79  (Red has no pieces left)  17.5s
+  game  12: minimax=red   winner=mcts    plies= 99  (Red has no pieces left)  16.0s
+  game  13: minimax=black winner=draw    plies=203  (40-move rule (no capture or man move))  31.0s
+  game  14: minimax=red   winner=mcts    plies= 55  (Red has no pieces left)  10.3s
+  game  15: minimax=black winner=draw    plies=245  (40-move rule (no capture or man move))  43.9s
+  game  16: minimax=red   winner=minimax plies=108  (Black has no pieces left)  24.7s
+  game  17: minimax=black winner=mcts    plies= 66  (Black has no pieces left)  13.0s
+  game  18: minimax=red   winner=draw    plies= 80  (Threefold repetition)  18.5s
+  game  19: minimax=black winner=draw    plies=170  (40-move rule (no capture or man move))  27.5s
+  game  20: minimax=red   winner=minimax plies=134  (Black has no pieces left)  29.0s
+
+Results of this run (computed from the games above):
+
+Difficulty Games  Minimax win  MCTS win    Draw  Minimax avg t  MCTS avg t  Avg plies
+--------------------------------------------------------------------------------------
+Medium        20       35.0%     30.0%   35.0%         0.016s      0.375s      111.0
