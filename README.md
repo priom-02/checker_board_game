@@ -27,6 +27,14 @@ python benchmark.py --summary       # summary of every recorded AI vs AI game
   pieces that must capture are outlined in gold and other moves are refused.)
 * AI vs AI: **Start**, **Pause/Resume** (also the Space key) and **Reset**.
 * **Restart** and **Menu** are always available; Esc returns to the menu.
+* Sound on/off: the speaker icon (top right) or the **M** key.
+
+## Sound effects
+
+Ten effects are synthesised by `sounds.py` (no downloaded audio) and stored in
+`assets/sounds/`: button click, piece select, move, capture (one per jump), King
+promotion, invalid action, game start, win, lose and draw. Volume and the
+starting on/off state are in `config.py`. Without an audio device the game runs silently.
 
 ## Rules implemented
 
@@ -98,6 +106,7 @@ A child position that would be the third repetition is treated as a draw.
 | `evaluation.py` | Heuristic evaluation |
 | `minimax.py` | Minimax with Alpha-Beta Pruning |
 | `mcts.py` | Monte Carlo Tree Search |
+| `sounds.py` | Generates and plays the sound effects |
 | `config.py` | Layout, colours, rules options and difficulty tables |
 | `stats.py` | Recording and summarising AI vs AI results |
 | `benchmark.py` | Headless AI vs AI experiments |

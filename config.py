@@ -130,3 +130,9 @@ MCTS_ROLLOUT_DEPTH = 40             # plies before a rollout is scored heuristic
 ANIM_SEGMENT_TIME = 0.18            # seconds per hop when animating AI moves
 AI_MOVE_DELAY = 0.30                # pause before an AI starts thinking
 RESULTS_DIR = "results"
+
+# ---------------------------------------------------------------------------
+# Sound effects
+# ---------------------------------------------------------------------------
+SOUND_ENABLED = True                # starting state (M key or speaker icon toggles it)
+SOUND_VOLUME = 0.7                  # 0.0 - 1.0

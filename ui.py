@@ -12,6 +12,7 @@ from mcts import MCTSAgent
 from minimax import MinimaxAgent
 from move_generator import apply_partial, initial_squares
 from piece import BLACK, PLAYER_NAMES, RED, opponent
+from sounds import SAMPLE_RATE, SoundManager
 
 HVH, HVAI, AIVAI = "Human vs Human", "Human vs AI", "AI vs AI"
 FONT_NAMES = "arialroundedmtbold,segoeuisemibold,segoeui,arial"
@@ -87,6 +88,7 @@ def draw_decor(surface):
 
 class App:
     def __init__(self):
+        pygame.mixer.pre_init(SAMPLE_RATE, -16, 1, 512)
         pygame.init()
         pygame.display.set_caption(f"{C.GAME_TITLE} - AI Checkers")
         icon = pygame.Surface((32, 32), pygame.SRCALPHA)
@@ -97,6 +99,8 @@ class App:
         self.clock = pygame.time.Clock()
         self.renderer = BoardRenderer()
         self.running = True
+        self.sounds = SoundManager()
+        self.sound_rect = pygame.Rect(C.WINDOW_WIDTH - C.MARGIN - 38, 16, 38, 34)
 
         self.screen_name = "menu"
         self.mode = None
@@ -206,11 +210,16 @@ class App:
         duration = 0.0
         if animate:
             duration = C.ANIM_SEGMENT_TIME * (len(move.path) - 1)
-            self.anim = {"pre": pre, "move": move, "piece": piece, "t0": now, "duration": duration}
+            self.anim = {"pre": pre, "move": move, "piece": piece, "t0": now, "duration": duration,
+                         "hops_played": 0}
+        else:
+            self._play_move_sound(move, final=True)
         self.ai_ready_at = now + duration + C.AI_MOVE_DELAY
 
     def update_game(self):
         now = time.perf_counter()
+        if self.anim:
+            self._play_anim_sounds(now)
         if self.anim and now - self.anim["t0"] >= self.anim["duration"]:
             self.anim = None
         if self.game.over:
@@ -239,8 +248,32 @@ class App:
             self.last_decision[worker.player] = worker.elapsed
             self.play_move(worker.move, animate=True)
 
+    def _play_move_sound(self, move, final):
+        self.sounds.play("capture" if move.captures else "move")
+        if final and move.promotes:
+            self.sounds.play("king")
+
+    def _play_anim_sounds(self, now):
+        """Play one sound as the animated piece lands on each square."""
+        a = self.anim
+        hops = len(a["move"].path) - 1
+        landed = min(hops, int((now - a["t0"]) / C.ANIM_SEGMENT_TIME))
+        while a["hops_played"] < landed:
+            a["hops_played"] += 1
+            self._play_move_sound(a["move"], final=a["hops_played"] == hops)
+
+    def _play_result_sound(self):
+        game = self.game
+        if game.is_draw:
+            self.sounds.play("draw")
+        elif self.mode == HVAI and self.players[game.winner] is not None:
+            self.sounds.play("lose")
+        else:
+            self.sounds.play("win")
+
     def _record_result(self):
         self.result_recorded = True
+        self._play_result_sound()
         if self.mode != AIVAI:
             return
         mm = self.players[self.minimax_color]
@@ -315,18 +348,22 @@ class App:
                 full = [m for m in candidates if m.path == tuple(sp)]
                 if full:
                     self.play_move(full[0], animate=False)
+                else:
+                    self.sounds.play("capture")     # one hop of a multiple capture
                 return
             if k > 1:
                 self._flash("You must keep capturing with this piece.")
                 return
             if idx == sp[0]:
                 self.selected_path = []
+                self.sounds.play("click")
                 return
 
         # (re)select a piece
         if game.squares[idx] * game.turn > 0:
             if any(m.start == idx for m in legal):
                 self.selected_path = [idx]
+                self.sounds.play("select")
             elif C.MANDATORY_CAPTURE and any(m.is_capture for m in legal):
                 self.selected_path = []
                 self._flash("Capture is mandatory - choose a piece that can jump.")
@@ -338,13 +375,39 @@ class App:
 
     def _flash(self, text):
         self.flash = (text, time.perf_counter() + 2.5)
+        self.sounds.play("invalid")
+
+    def _press(self, action):
+        """Run a button action with its sound."""
+        starts_game = action[0] in ("start", "restart", "reset") or action == ("mode", HVH)
+        self.sounds.play("start" if starts_game else "click")
+        self.handle_action(action)
+
+    def _draw_sound_button(self, mouse):
+        """Speaker icon in the top-right corner."""
+        s, r = self.screen, self.sound_rect
+        color = C.TITLE_BLUE if self.sounds.enabled else C.TEXT_MUTED
+        if r.collidepoint(mouse):
+            pygame.draw.rect(s, (243, 240, 252), r, border_radius=8)
+        pygame.draw.rect(s, color, r, 2, border_radius=8)
+        x, y = r.x + 8, r.centery
+        pygame.draw.polygon(s, color, [(x, y - 4), (x + 5, y - 4), (x + 11, y - 9),
+                                       (x + 11, y + 9), (x + 5, y + 4), (x, y + 4)])
+        if self.sounds.enabled:
+            pygame.draw.arc(s, color, (x + 7, y - 6, 10, 12), -1.1, 1.1, 2)
+            pygame.draw.arc(s, color, (x + 7, y - 10, 15, 20), -1.1, 1.1, 2)
+        else:
+            pygame.draw.line(s, C.ACCENT_CORAL, (x + 14, y - 5), (x + 22, y + 5), 2)
+            pygame.draw.line(s, C.ACCENT_CORAL, (x + 22, y - 5), (x + 14, y + 5), 2)
 
     def handle_event(self, event):
         if event.type == pygame.QUIT:
             self.running = False
             return
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
+            if event.key == pygame.K_m:
+                self.sounds.toggle()
+            elif event.key == pygame.K_ESCAPE:
                 if self.screen_name == "menu":
                     self.running = False
                 else:
@@ -353,14 +416,18 @@ class App:
                 self.handle_action(("toggle_run",))
             return
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            if self.sound_rect.collidepoint(event.pos):
+                if self.sounds.toggle():
+                    self.sounds.play("click")
+                return
             if self.screen_name == "game" and self.game.over and not self.anim:
                 for b in self.overlay_buttons:
                     if b.hit(event.pos):
-                        self.handle_action(b.action)
+                        self._press(b.action)
                         return
             for b in list(self.buttons):
                 if b.hit(event.pos):
-                    self.handle_action(b.action)
+                    self._press(b.action)
                     return
             if self.screen_name == "game":
                 self.on_board_click(event.pos)
@@ -383,6 +450,7 @@ class App:
             draw_text(s, name, 18, C.TITLE_BLUE, (C.WINDOW_WIDTH - 90 - 430, 592 + i * 28), bold=True)
         for b in self.buttons:
             b.draw(s, mouse)
+        self._draw_sound_button(mouse)
 
     def draw_setup(self, mouse):
         s = self.screen
@@ -409,6 +477,7 @@ class App:
             draw_text(s, line, 20, C.TEXT_DARK, (x0 + 22, 322 + i * 34), bold=i == 0 or self.mode == AIVAI)
         for b in self.buttons:
             b.draw(s, mouse)
+        self._draw_sound_button(mouse)
 
     def _display_state(self):
         """Squares to draw, plus squares to hide and the animated piece."""
@@ -462,6 +531,7 @@ class App:
         self.draw_sidebar(mouse)
         if game.over and not self.anim:
             self.draw_game_over(mouse)
+        self._draw_sound_button(mouse)
 
     def _player_role(self, color):
         agent = self.players[color]
