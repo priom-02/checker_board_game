@@ -95,7 +95,10 @@ class App:
         pygame.draw.circle(icon, C.RED_RIM, (16, 16), 15)
         pygame.draw.circle(icon, C.RED_PIECE, (16, 16), 12)
         pygame.display.set_icon(icon)
-        self.screen = pygame.display.set_mode((C.WINDOW_WIDTH, C.WINDOW_HEIGHT))
+        flags = pygame.SCALED | pygame.RESIZABLE
+        if getattr(C, "FULLSCREEN", True):
+            flags |= pygame.FULLSCREEN
+        self.screen = pygame.display.set_mode((C.WINDOW_WIDTH, C.WINDOW_HEIGHT), flags)
         self.clock = pygame.time.Clock()
         self.renderer = BoardRenderer()
         self.running = True
@@ -123,13 +126,30 @@ class App:
         crop = surf.subsurface(pygame.Rect(C.FRAME_X, C.FRAME_Y, C.FRAME_SIZE, C.FRAME_SIZE)).copy()
         return pygame.transform.smoothscale(crop, (430, 430))
 
+    @property
+    def is_fullscreen(self):
+        surf = pygame.display.get_surface()
+        return bool(surf and (surf.get_flags() & pygame.FULLSCREEN))
+
+    def toggle_fullscreen(self):
+        try:
+            pygame.display.toggle_fullscreen()
+        except pygame.error:
+            pass
+        if hasattr(self, "fs_button"):
+            self.fs_button.text = "Windowed" if self.is_fullscreen else "Fullscreen"
+
     def _build_menu(self):
         x, y = 70, 330
+        fs_label = "Windowed" if self.is_fullscreen else "Fullscreen"
+        self.fs_button = Button((x, y + 192, 154, 50), fs_label, ("toggle_fullscreen",),
+                                style="secondary", size=17)
         self.buttons = [
             Button((x, y, 320, 50), HVH, ("mode", HVH)),
             Button((x, y + 64, 320, 50), HVAI, ("mode", HVAI)),
             Button((x, y + 128, 320, 50), AIVAI, ("mode", AIVAI)),
-            Button((x, y + 192, 320, 50), "Quit", ("quit",), style="secondary"),
+            self.fs_button,
+            Button((x + 166, y + 192, 154, 50), "Quit", ("quit",), style="secondary"),
         ]
 
     def _build_setup(self):
@@ -329,6 +349,8 @@ class App:
                 self.paused = not self.paused
                 if not self.paused:
                     self.ai_ready_at = time.perf_counter() + 0.1
+        elif kind == "toggle_fullscreen":
+            self.toggle_fullscreen()
 
     def on_board_click(self, pos):
         if not self.is_human_turn() or self.anim:
@@ -412,6 +434,8 @@ class App:
                     self.running = False
                 else:
                     self.handle_action(("menu",))
+            elif event.key == pygame.K_F11 or (event.key == pygame.K_RETURN and (event.mod & pygame.KMOD_ALT)):
+                self.toggle_fullscreen()
             elif self.screen_name == "game" and event.key == pygame.K_SPACE and self.mode == AIVAI:
                 self.handle_action(("toggle_run",))
             return
