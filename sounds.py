@@ -103,6 +103,7 @@ def _build_all():
         "win": win,
         "lose": lose,
         "draw": draw,
+        "undo": _tone(640, 0.11, 0.42, decay=24, end_freq=380, harmonics=(1.0, 0.15)),
     }
 
 
@@ -124,7 +125,7 @@ def generate_sounds(folder=SOUND_DIR):
     return sorted(built)
 
 
-SOUND_NAMES = ("click", "select", "move", "capture", "king", "invalid", "start", "win", "lose", "draw")
+SOUND_NAMES = ("click", "select", "move", "capture", "king", "invalid", "start", "win", "lose", "draw", "undo")
 
 
 class SoundManager:

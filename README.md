@@ -28,6 +28,11 @@ python benchmark.py --summary       # summary of every recorded AI vs AI game
 * AI vs AI: **Start**, **Pause/Resume** (also the Space key) and **Reset**.
 * **Restart** and **Menu** are always available; Esc returns to the menu.
 * Sound on/off: the speaker icon (top right) or the **M** key.
+* On a human's turn, pieces that can move glow green and pieces that can capture glow gold.
+* **Undo Move** (or **U** / **Ctrl+Z**): Human vs Human takes back one move; Human vs AI
+  takes back the AI's reply and your move. During a multiple capture it steps back one jump.
+* The window can be resized or maximised and is redrawn sharply. **F11** toggles fullscreen.
+* Human vs AI setup lets you choose the **AI Opponent**: MCTS or Minimax + Alpha-Beta Pruning.
 
 ## Sound effects
 
@@ -60,11 +65,11 @@ Humans and both AIs use the same legal-move generator (`move_generator.py`), and
 
 ## Game modes and difficulty
 
-| Human vs AI | Algorithm | Configuration |
+| Human vs AI | MCTS | Minimax + Alpha-Beta Pruning |
 |---|---|---|
-| Easy | Minimax + Alpha-Beta | depth 2 |
-| Medium | Minimax + Alpha-Beta | depth 4 |
-| Hard | Minimax + Alpha-Beta | depth 8 |
+| Easy | 100 simulations | depth 2 |
+| Medium | 500 simulations | depth 4 |
+| Hard | 2,000 simulations | depth 6 |
 
 | AI vs AI | Agent 1 (Minimax + α-β) | Agent 2 (MCTS) |
 |---|---|---|
@@ -106,6 +111,7 @@ A child position that would be the third repetition is treated as a draw.
 | `evaluation.py` | Heuristic evaluation |
 | `minimax.py` | Minimax with Alpha-Beta Pruning |
 | `mcts.py` | Monte Carlo Tree Search |
+| `gfx.py` | Sharp, anti-aliased drawing at any window size |
 | `sounds.py` | Generates and plays the sound effects |
 | `config.py` | Layout, colours, rules options and difficulty tables |
 | `stats.py` | Recording and summarising AI vs AI results |

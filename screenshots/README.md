@@ -226,3 +226,10 @@ Full screenshots are 1004x684 px; board-only crops are 644x644 px.
 | File | Shows |
 |---|---|
 | [01_ai_vs_ai_results_table.png](08_results/01_ai_vs_ai_results_table.png) | Measured AI vs AI results table |
+
+## 10_videos - AI vs AI match videos (1080p with sound)
+
+| File | Match | Result | Moves | Length |
+|---|---|---|---|---|
+| [ai_vs_ai_medium.mp4](10_videos/ai_vs_ai_medium.mp4) | Minimax depth 4 vs MCTS 500 simulations | Minimax (Black) wins - Red has no legal moves | 43 | 43 s |
+| [ai_vs_ai_hard.mp4](10_videos/ai_vs_ai_hard.mp4) | Minimax depth 6 vs MCTS 2,000 simulations | Minimax (Black) wins - Red has no pieces left | 61 | 59 s |

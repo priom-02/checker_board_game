@@ -62,7 +62,8 @@ SELECT_RING = (255, 255, 255)
 MOVE_RING = (255, 255, 255)
 MOVE_FILL = (90, 55, 25, 90)        # translucent brown inside move rings
 CAPTURE_COLOR = (255, 90, 95)       # slide accent coral
-MUST_CAPTURE_RING = (255, 196, 64)
+MUST_CAPTURE_RING = (255, 196, 64)  # gold glow: this piece can capture
+MOVABLE_GLOW = (72, 224, 128)       # green glow: this piece can move
 LAST_MOVE_COLOR = (255, 255, 255, 150)
 
 # Slide theme (menus and sidebar)
@@ -103,11 +104,18 @@ MOVE_LIMIT_PLIES = 80
 # ---------------------------------------------------------------------------
 DIFFICULTIES = ["Easy", "Medium", "Hard"]
 
-# Human vs AI: Minimax + Alpha-Beta Pruning
+# Human vs AI: algorithm choices shown on the setup screen
+ALGO_MCTS = "Monte Carlo Tree Search (MCTS)"
+ALGO_ALPHA_BETA = "Minimax + Alpha-Beta Pruning"
+HUMAN_VS_AI_ALGORITHMS = [ALGO_MCTS, ALGO_ALPHA_BETA]
+DEFAULT_HUMAN_VS_AI_ALGORITHM = ALGO_ALPHA_BETA
+
+# Human vs AI strength per algorithm (from the slide):
+# MCTS = number of simulations, Minimax + Alpha-Beta = search depth.
 HUMAN_VS_AI = {
-    "Easy": {"depth": 2},
-    "Medium": {"depth": 4},
-    "Hard": {"depth": 8},           # slide: depth 6-8
+    "Easy": {ALGO_MCTS: 100, ALGO_ALPHA_BETA: 2},
+    "Medium": {ALGO_MCTS: 500, ALGO_ALPHA_BETA: 4},
+    "Hard": {ALGO_MCTS: 2000, ALGO_ALPHA_BETA: 6},
 }
 
 # AI vs AI: Minimax (agent 1) vs MCTS (agent 2)

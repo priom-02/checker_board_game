@@ -33,6 +33,7 @@ class GameState:
         self.is_draw = False
         self.result_reason = ""
         self._legal = None
+        self._snapshots = []                    # state before each move, for undo
         self.position_counts[self.position_key()] += 1
         self._check_game_over()
 
@@ -68,6 +69,7 @@ class GameState:
         # use the generator's own instance (carries the promotion flag)
         move = self.legal_moves()[self.legal_moves().index(move)]
 
+        self._snapshots.append((self.board.squares, self.turn, dict(self.captured), self.quiet_plies))
         mover_was_man = not is_king(self.board.squares[move.start])
         self.board.squares = apply_move(self.board.squares, move)
         self.captured[self.turn] += len(move.captures)
@@ -83,6 +85,21 @@ class GameState:
         self.position_counts[self.position_key()] += 1
         self._check_game_over()
         return move
+
+    def undo(self):
+        """Take back the last move and return its (player, move)."""
+        if not self._snapshots:
+            raise ValueError("There is no move to undo.")
+        key = self.position_key()
+        self.position_counts[key] -= 1
+        if self.position_counts[key] <= 0:
+            del self.position_counts[key]
+        self.board.squares, self.turn, self.captured, self.quiet_plies = self._snapshots.pop()
+        self.winner = None
+        self.is_draw = False
+        self.result_reason = ""
+        self._legal = None
+        return self.history.pop()
 
     def _check_game_over(self):
         player = self.turn

@@ -70,3 +70,6 @@ timestamp,source,difficulty,minimax_depth,mcts_simulations,capture_rule,minimax_
 2026-11-21 02:22:47,gui,Hard,6,2000,optional,black,minimax,Red has no pieces left,51,26,2.0594,25,35.24
 2026-11-23 19:19:19,gui,Medium,4,500,optional,black,minimax,Red has no pieces left,61,31,0.5024,30,9.0343
 2026-11-23 19:24:43,gui,Hard,6,2000,optional,red,minimax,Black has no pieces left,42,21,3.1813,21,30.4097
+2026-11-23 20:01:05,gui,Medium,4,500,optional,black,minimax,Red has no pieces left,41,21,0.6826,20,9.2887
+2026-11-23 20:15:58,gui,Hard,6,2000,optional,black,minimax,Red has no pieces left,157,79,7.3144,78,133.8678
+2026-11-23 21:27:15,gui,Medium,4,500,optional,red,minimax,Black has no pieces left,44,22,0.5836,22,10.0688

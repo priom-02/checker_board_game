@@ -53,6 +53,7 @@ def set_position(app, pieces, turn):
     g.turn = turn
     g._legal = None
     g.history.clear()
+    g._snapshots.clear()
     g.position_counts.clear()
     g.position_counts[g.position_key()] += 1
     g.winner, g.is_draw, g.result_reason = None, False, ""
@@ -307,8 +308,15 @@ def write_index():
             lines += ["", f"## {folder} - {SECTION_TITLES.get(folder, '')}", "",
                       "| File | Shows |", "|---|---|"]
         lines.append(f"| [{name}]({folder}/{name}) | {desc} |")
-    with open(os.path.join(OUT, "README.md"), "w", encoding="utf-8") as fh:
-        fh.write("\n".join(lines) + "\n")
+    index = os.path.join(OUT, "README.md")
+    videos = ""                 # keep the section written by record_ai_vs_ai.py
+    if os.path.exists(index):
+        with open(index, encoding="utf-8") as fh:
+            parts = fh.read().split("\n## 10_videos", 1)
+        if len(parts) == 2:
+            videos = "\n\n## 10_videos" + parts[1]
+    with open(index, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(lines).rstrip("\n") + (videos or "\n"))
 
 
 if __name__ == "__main__":
